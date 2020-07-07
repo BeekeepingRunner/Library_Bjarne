@@ -1,0 +1,5 @@
+﻿  Book.cpp
+D:\Dev\C++\Programming_principles_Bjarne\Library\Library\Book.h(1,1): fatal error C1016: #if[n]def expected an identifier
+  Library.cpp
+D:\Dev\C++\Programming_principles_Bjarne\Library\Library\Book.h(1,1): fatal error C1016: #if[n]def expected an identifier
+  Generating Code...

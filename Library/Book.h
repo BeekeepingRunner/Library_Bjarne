@@ -5,22 +5,16 @@ class Book {
 
 public:
 
-	Book(std::string isbn, std::string title, std::string author, std::string copyrightDate)
-		: m_isbn{ isbn }, m_title{ title }, m_author{ author }, m_copyrightDate{ copyrightDate }
-	{
-		validation();
+	Book(std::string isbn, std::string title,
+		std::string author, std::string copyrightDate);
 
-
-	}
-
-	std::string getIsbn() { return m_isbn; }
-	std::string getTitle() { return m_title; }
-	std::string getAuthor() { return m_author; }
-	std::string getCopyrightDate() { return m_copyrightDate; }
+	std::string getIsbn() const { return m_isbn; }
+	std::string getTitle() const { return m_title; }
+	std::string getAuthor() const { return m_author; }
+	std::string getCopyrightDate() const { return m_copyrightDate; }
 
 	void checkOut() { isCheckedOut = true; }
 	void checkIn() { isCheckedOut = false; }
-
 
 private:
 
@@ -32,4 +26,7 @@ private:
 	bool isCheckedOut{ 0 };
 
 	void validation();
+	void parseIsbn();
 };
+
+std::string enterIsbn();

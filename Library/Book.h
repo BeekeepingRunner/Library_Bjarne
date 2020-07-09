@@ -26,7 +26,21 @@ private:
 	bool isCheckedOut{ 0 };
 
 	void validation();
-	void parseIsbn();
+
+	void checkIsbn();
+
+	void checkDate();
+	void parseDayMonth(std::string dayToken);
+
+	int toInt(std::string digitString);
+
+	void isbnError();
+	void dateError();
 };
+
+bool operator==(const Book& b1, const Book& b2);
+bool operator!=(const Book& b1, const Book& b2);
+
+std::ostream& operator<<(std::ostream& os, const Book& b);
 
 std::string enterIsbn();

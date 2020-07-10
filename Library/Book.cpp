@@ -2,12 +2,16 @@
 
 #include <iostream>
 
+// TODO:
+// 1. Try to connect the date validation with a Date class in Chrono.h
+// 2. Improve input data validation
+
 // Constructor takes all necessary information about a book
 // and checks if it is correct (throws runtime-error otherwise).
-Book::Book(std::string isbn, std::string title,
-	std::string author, std::string copyrightDate)
-	: m_isbn{ isbn }, m_title{ title },
-	m_author{ author }, m_copyrightDate{ copyrightDate }
+Book::Book(std::string isbn, std::string title, std::string author,
+		Genre genre, std::string copyrightDate)
+	: m_isbn{ isbn }, m_title{ title }, m_author{ author },
+	m_genre{ genre }, m_copyrightDate{ copyrightDate }
 {
 	validation();
 }
@@ -175,7 +179,28 @@ bool operator!=(const Book& b1, const Book& b2)
 
 std::ostream& operator<<(std::ostream& os, const Book& b)
 {
-	os << b.getTitle() << '\n' << b.getAuthor() << '\n' << b.getIsbn();
+	os << b.getTitle() << '\n' << b.getAuthor() << '\n';
+	
+	switch (b.getGenre())
+	{
+	case Book::Genre::fiction:
+		os << "fiction\n";
+		break;
+	case Book::Genre::nonfiction:
+		os << "nonfiction\n";
+		break;
+	case Book::Genre::periodical:
+		os << "periodical\n";
+		break;
+	case Book::Genre::biography:
+		os << "biography\n";
+		break;
+	case Book::Genre::children:
+		os << "children\n";
+		break;
+	}
+
+	os << b.getIsbn();
 	return os;
 }
 

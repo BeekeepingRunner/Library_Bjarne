@@ -5,22 +5,32 @@ class Book {
 
 public:
 
-	Book(std::string isbn, std::string title,
-		std::string author, std::string copyrightDate);
+	enum class Genre {
+		fiction,
+		nonfiction,
+		periodical,
+		biography,
+		children
+	};
 
-	std::string getIsbn() const { return m_isbn; }
-	std::string getTitle() const { return m_title; }
-	std::string getAuthor() const { return m_author; }
-	std::string getCopyrightDate() const { return m_copyrightDate; }
+	Book(std::string isbn, std::string title,
+		std::string author, Genre genre, std::string copyrightDate);
+
+	std::string getIsbn()			const { return m_isbn; }
+	std::string getTitle()			const { return m_title; }
+	std::string getAuthor()			const { return m_author; }
+	Genre		getGenre()			const { return m_genre; }
+	std::string getCopyrightDate()	const { return m_copyrightDate; }
 
 	void checkOut() { isCheckedOut = true; }
-	void checkIn() { isCheckedOut = false; }
+	void checkIn()	{ isCheckedOut = false; }
 
 private:
 
 	std::string m_isbn;
 	std::string m_title;
 	std::string m_author;
+	Genre		m_genre;
 	std::string m_copyrightDate;
 
 	bool isCheckedOut{ 0 };
@@ -28,7 +38,6 @@ private:
 	void validation();
 
 	void checkIsbn();
-
 	void checkDate();
 	void parseDayMonth(std::string dayToken);
 

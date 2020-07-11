@@ -40,10 +40,17 @@ namespace Chrono {
 		int m_day;
 		Month m_month;
 		int m_year;
+
+		int m_monthLength;
+		void setMonthLength();
 	};
 
+	// helper functions
+
 	static bool isDate(int day, Month month, int year);
-	static bool leapyear(int year);
+	static bool isLeapYear(int year);
+
+	int monthLength(Month month, int year);
 
 	bool operator==(const Date& date1, const Date& date2);
 	bool operator!=(const Date& date1, const Date& date2);

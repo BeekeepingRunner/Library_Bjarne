@@ -17,9 +17,9 @@ int main()
 
 		// std::cout << book << '\n' << book2 << '\n';
 		
-		Chrono::Date date{ 1, Chrono::Month::jun, 2001 };
+		Chrono::Date date{ 21, Chrono::Month::dec, 2018 };
 		std::cout << date << '\n';
-		date.addDay(1043);
+		date.addDay(70);
 		std::cout << date << '\n';
 	}
 	catch (std::runtime_error e) {

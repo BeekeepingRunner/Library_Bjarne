@@ -11,7 +11,8 @@ public:
 	std::string getUserLibCardNum() const { return m_libCardNum; }
 	int			getLibFees()		const { return m_libFees; }
 
-	void setLibFee(int fee) { m_libFees += fee; }
+	void setLibFee(int fee) { m_libFees = fee; }
+	void addLibFee(int fee) { m_libFees += fee; }
 	bool hasFee() const { (m_libFees > 0) ? true : false; }
 
 private:

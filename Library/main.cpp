@@ -12,15 +12,14 @@
 int main()
 {
 	try {
-		// Book book{ "123-412-324-A", "Dziady", "Mickiewitch", Book::Genre::nonfiction, "22-12-1999" };
 		// Book book2{ "3-3-4-f", "Lalka", "Boleslaw Prus", Book::Genre::nonfiction, "01-02-2010" };
 
 		// std::cout << book << '\n' << book2 << '\n';
 		
-		Chrono::Date date{ 21, Chrono::Month::dec, 2018 };
-		std::cout << date << '\n';
-		date.addDay(70);
-		std::cout << date << '\n';
+		Chrono::Date date{ 12, Chrono::Month::jul, 2020 };
+		Book book{ "123-412-324-A", "Dziady", "Mickiewitch", Book::Genre::nonfiction, date };
+
+		std::cout << book << '\n';
 	}
 	catch (std::runtime_error e) {
 		std::cerr << e.what() << std::endl;

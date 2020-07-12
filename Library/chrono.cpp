@@ -148,9 +148,9 @@ namespace Chrono {
 
 	bool operator==(const Date& a, const Date& b)
 	{
-		return a.getYear() == b.getYear()
-			&& a.getMonth() == b.getMonth()
-			&& a.getDay() == b.getDay();
+		return (a.getYear() == b.getYear())
+			&& (a.getMonth() == b.getMonth())
+			&& (a.getDay() == b.getDay());
 	}
 
 	bool operator!=(const Date& a, const Date& b)

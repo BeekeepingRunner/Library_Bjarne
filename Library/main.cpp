@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#include "Book.h"
-#include "chrono.h"
+#include "library.h"
 
 // TODO:
 // 0. Test Chrono::Date
@@ -12,20 +11,34 @@
 int main()
 {
 	try {
-		// Book book2{ "3-3-4-f", "Lalka", "Boleslaw Prus", Book::Genre::nonfiction, "01-02-2010" };
+		Chrono::Date date{ 12, Chrono::Month::dec, 2020 };
+		Book book{ "123-412-324-A", "Dziady", "Mickiewicz", Book::Genre::nonfiction, date };
 
-		// std::cout << book << '\n' << book2 << '\n';
-		
-		Chrono::Date date{ 12, Chrono::Month::jul, 2020 };
-		Book book{ "123-412-324-A", "Dziady", "Mickiewitch", Book::Genre::nonfiction, date };
+		date.addMonth(3);
+		Book book2{ "3-3-4-f", "Lalka", "Boleslaw Prus", Book::Genre::nonfiction, date };
 
-		std::cout << book << '\n';
+		Patron patron1{ "Bartek", "012532", 0 };
+		Patron patron2{ "Justyna", "352533", 20 };
+
+		Library lib{};
+		lib.addBook(book);
+		lib.addBook(book2);
+		lib.addPatron(patron1);
+		lib.addPatron(patron2);
+
+		lib.bookCheckout("Dziady", "Bartek", date);
+
+		std::vector<std::string> vec{ lib.getDebtorNames() };
+		for (std::string s : vec)
+			std::cout << s << '\n';
 	}
 	catch (std::runtime_error e) {
 		std::cerr << e.what() << std::endl;
 		return -1;
 	}
-
+	catch (Library::TransactionFail) {
+		std::cerr << "Library: Transaction failed";
+	}
 	return 0;
 }
 

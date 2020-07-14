@@ -25,6 +25,7 @@ int main()
 		lib.addBook(book2);
 		lib.addPatron(patron1);
 		lib.addPatron(patron2);
+		lib.addPatron(patron2);
 
 		lib.bookCheckout("Dziady", "Bartek", date);
 

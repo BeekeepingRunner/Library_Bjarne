@@ -188,26 +188,16 @@ namespace Chrono {
 
 		return is;
 	}
-
-	enum class Day {
-		sunday, monday, tuesday, wednesday, thursday, friday, saturday
-	};
-
-	/*
-	Day day_of_week(const Date& d)
-	{
-		// ...
-	}
-
-	Date next_Sunday(const Date& d)
-	{
-		// ...
-	}
-
-	Date next_weekday(const Date& d)
-	{
-		// ...
-	}
-	*/
-
 }	// Chrono
+
+// TODO
+
+//Chrono::Date day_of_week(const Chrono::Date& d);
+Chrono::Date week_of_year(const Chrono::Date& d);
+
+//Chrono::Date next_Sunday(const Chrono::Date& d);
+//Chrono::Date next_weekday(const Chrono::Date& d);
+Day next_workday(const Chrono::Date& d)
+{
+	
+}

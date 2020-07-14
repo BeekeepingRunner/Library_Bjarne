@@ -59,3 +59,14 @@ namespace Chrono {
 	std::istream& operator>>(std::istream& is, Date& date);
 
 };	// Chrono
+
+enum class Day {
+	sunday, monday, tuesday, wednesday, thursday, friday, saturday
+};
+
+Chrono::Date day_of_week(const Chrono::Date& d);
+Chrono::Date week_of_year(const Chrono::Date& d);
+
+Chrono::Date next_Sunday(const Chrono::Date& d);
+Chrono::Date next_weekday(const Chrono::Date& d);
+Day next_workday(const Chrono::Date& d);

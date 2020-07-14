@@ -22,8 +22,8 @@ public:
 	class PatronIsMissing {};
 	class TransactionFail {};
 
-	void addBook(Book &book)			{ books.push_back(book); }
-	void addPatron(Patron &patron)	{ patrons.push_back(patron); }
+	void addBook(Book& book);
+	void addPatron(Patron& patron);
 
 	void bookCheckout(std::string title, std::string userName, Chrono::Date date);
 

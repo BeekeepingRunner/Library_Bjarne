@@ -21,3 +21,6 @@ private:
 	std::string m_libCardNum;
 	int			m_libFees;
 };
+
+bool operator==(const Patron& p1, const Patron& p2);
+bool operator!=(const Patron& p1, const Patron& p2);

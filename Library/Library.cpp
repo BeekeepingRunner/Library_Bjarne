@@ -1,5 +1,33 @@
 #include "library.h"
 
+void Library::addBook(Book& book)
+{
+	for (Book b : books)
+	{
+		if (book == b)
+		{
+			std::cerr << "Library: addBook(): Book already exists in a library\n";
+			return;
+		}
+	}
+
+	books.push_back(book);
+}
+
+void Library::addPatron(Patron& patron)
+{
+	for (Patron p : patrons)
+	{
+		if (patron == p)
+		{
+			std::cerr << "Library: addPatron(): Patron already exists in a library\n";
+			return;
+		}
+	}
+
+	patrons.push_back(patron);
+}
+
 // 3. Create a Transaction, and add it to a vector
 void Library::bookCheckout(std::string title, std::string userName, Chrono::Date date)
 {

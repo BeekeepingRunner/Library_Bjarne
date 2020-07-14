@@ -8,3 +8,15 @@ Patron::Patron(std::string userName, std::string libCardNum, int libFees = 0)
 {
 
 }
+
+bool operator==(const Patron& p1, const Patron& p2)
+{
+	return p1.getUserName() == p2.getUserName()
+		&& p1.getUserLibCardNum() == p2.getUserLibCardNum()
+		&& p1.getLibFees() == p2.getLibFees();
+}
+
+bool operator!=(const Patron& p1, const Patron& p2)
+{
+	return !(p1 == p2);
+}

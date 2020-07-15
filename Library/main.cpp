@@ -32,6 +32,8 @@ int main()
 		std::vector<std::string> vec{ lib.getDebtorNames() };
 		for (std::string s : vec)
 			std::cout << s << '\n';
+
+		std::cout << Chrono::day_of_week(Chrono::Date{15, Chrono::Month::jul, 2020}) << '\n';
 	}
 	catch (std::runtime_error e) {
 		std::cerr << e.what() << std::endl;

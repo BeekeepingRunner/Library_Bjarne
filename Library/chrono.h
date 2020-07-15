@@ -18,6 +18,9 @@ namespace Chrono {
 		dec
 	};
 
+	static constexpr int MIN_YEAR{ 1970 };
+	static constexpr int MAX_YEAR{ 2200 };
+
 	class Date {
 
 	public:
@@ -58,15 +61,16 @@ namespace Chrono {
 	std::ostream& operator<<(std::ostream& os, const Date& date);
 	std::istream& operator>>(std::istream& is, Date& date);
 
+	enum class Day {
+		sunday, monday, tuesday, wednesday, thursday, friday, saturday
+	};
+
+	std::ostream& operator<<(std::ostream& os, const Day& day);
+
+	Day day_of_week(const Chrono::Date& d);
+	Day day_of_week2(const Chrono::Date& d); // TODO
+
+	Date week_of_year(const Chrono::Date& d); // TODO
+	Day next_workday(const Chrono::Date& d); // TODO
+
 };	// Chrono
-
-enum class Day {
-	sunday, monday, tuesday, wednesday, thursday, friday, saturday
-};
-
-Chrono::Date day_of_week(const Chrono::Date& d);
-Chrono::Date week_of_year(const Chrono::Date& d);
-
-Chrono::Date next_Sunday(const Chrono::Date& d);
-Chrono::Date next_weekday(const Chrono::Date& d);
-Day next_workday(const Chrono::Date& d);

@@ -1,4 +1,5 @@
 #include "chrono.h"
+#include <math.h>
 
 namespace Chrono {
 
@@ -42,7 +43,7 @@ namespace Chrono {
 			}
 			else
 				m_month = static_cast<Month>(static_cast<int>(m_month) + 1);
-			
+
 			// setting the new value of m_monthLength
 			setMonthLength(); // doesn't rely on m_days so it is safe
 		}
@@ -109,6 +110,9 @@ namespace Chrono {
 		if (mm < Month::jan || Month::dec < mm) return false;
 
 		if (monthLength(mm, yy) < dd) return false;
+
+		if (yy < MIN_YEAR || MAX_YEAR < yy)
+			return false;
 
 		return true;
 	}
@@ -188,16 +192,79 @@ namespace Chrono {
 
 		return is;
 	}
+
+	std::ostream& operator<<(std::ostream& os, const Day& day)
+	{
+		switch (day)
+		{
+		case Day::sunday:
+			os << "Sunday";
+			break;
+		case Day::monday:
+			os << "Monday";
+			break;
+		case Day::tuesday:
+			os << "Tuesday";
+			break;
+		case Day::wednesday:
+			os << "Wednesday";
+			break;
+		case Day::thursday:
+			os << "Thursday";
+			break;
+		case Day::friday:
+			os << "Friday";
+			break;
+		case Day::saturday:
+			os << "Saturday";
+			break;
+		}
+
+		return os;
+	}
+
+
+	// Determines a day of the week for a given Date using the Zeller's Rule
+	Day day_of_week(const Chrono::Date& date)
+	{
+		// Day of the Month
+		int k{ date.getDay() };
+		// Month number
+		// Warning: for Zeller's Rule we start counting Months from March (1) to February(12)
+		int m{ static_cast<int>(date.getMonth()) - 2 };
+		int year{ date.getYear() };
+		if (m == 0) { // february
+			m = 12;
+			--year;
+		}
+		if (m == -1) { // january
+			m = 11;
+			--year;
+		}
+		// last two digits of the year (regarding new month counting)
+		int d{ year % 100 };
+		// first two digits of the year (century)
+		int c{ year / 100 };
+		// formula
+		double f{ k + floor((13 * m - 1) / 5.0) + d
+			+ floor(d / 4.0) + floor(c / 4.0) - 2 * c };
+
+		int remainder{ static_cast<int>(f) % 7 };
+		// if a remainder is negative we have to find the 
+		// greatest multiple of 7 that is LESS than f
+		// e.g. if f = -17, remainder = 4 because -21 + 4 = -17
+		if (remainder < 0)
+			remainder += 7;
+
+		// change remainder to the day of the month (Sunday == 0)
+		return static_cast<Day>(remainder);
+	}
+
+	// TODO
+	// Determines a day of the week for a given Date using the Key Value Method
+	Day day_of_week2(const Chrono::Date& d);
+
+	Date week_of_year(const Chrono::Date& d); // TODO
+	Day next_workday(const Chrono::Date& d); // TODO
+
 }	// Chrono
-
-// TODO
-
-//Chrono::Date day_of_week(const Chrono::Date& d);
-Chrono::Date week_of_year(const Chrono::Date& d);
-
-//Chrono::Date next_Sunday(const Chrono::Date& d);
-//Chrono::Date next_weekday(const Chrono::Date& d);
-Day next_workday(const Chrono::Date& d)
-{
-	
-}

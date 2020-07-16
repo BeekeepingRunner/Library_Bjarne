@@ -260,11 +260,74 @@ namespace Chrono {
 		return static_cast<Day>(remainder);
 	}
 
-	// TODO
-	// Determines a day of the week for a given Date using the Key Value Method
-	Day day_of_week2(const Chrono::Date& d);
+	Date next_workday(const Chrono::Date& date)
+	{
+		Day currDay{ day_of_week(date) };
+		Date nextWorkday{ date }; // to be modified
 
-	Date week_of_year(const Chrono::Date& d); // TODO
-	Day next_workday(const Chrono::Date& d); // TODO
+		switch (currDay)
+		{
+		case Day::friday:
+			nextWorkday.addDay(3);
+			return nextWorkday;
+		case Day::saturday:
+			nextWorkday.addDay(2);
+			return nextWorkday;
+		default:
+			nextWorkday.addDay(1);
+			return nextWorkday;
+		}
+	}
+
+	int week_of_year(const Chrono::Date& date)
+	{
+		// 1st, naive method
+		/*
+		int week{ 1 };
+		Date iDate{ 1, Month::jan, date.getYear() };
+		int i{ 0 };
+		while (iDate != date)
+		{
+			iDate.addDay(1);
+			++i;
+			if (i == 7)
+			{
+				i = 0;
+				++week;
+			}
+		}
+		return week;
+		*/
+
+		// 2nd method
+		// We have to count days from 1st of jan to the current date
+		int currMonth{ 1 }; // jan
+		bool longerMonth{ true }; // jan has 31 days
+		int days{ 0 };
+		while (currMonth != static_cast<int>(date.getMonth()))
+		{
+			if (currMonth == 8)
+				longerMonth = true;
+			
+			if (currMonth == 2)
+			{
+				if (isLeapYear(date.getYear()))
+					days += 29;
+				else
+					days += 28;
+			}
+			else if (longerMonth)
+				days += 31;
+			else
+				days += 30;
+
+			++currMonth;
+			longerMonth = !longerMonth;
+		}
+		// adds days from the current month
+		days += date.getDay();
+
+		return ((days - 1) / 7) + 1; // week of the year number
+	}
 
 }	// Chrono

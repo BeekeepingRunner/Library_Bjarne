@@ -68,9 +68,7 @@ namespace Chrono {
 	std::ostream& operator<<(std::ostream& os, const Day& day);
 
 	Day day_of_week(const Chrono::Date& d);
-	Day day_of_week2(const Chrono::Date& d); // TODO
-
-	Date week_of_year(const Chrono::Date& d); // TODO
-	Day next_workday(const Chrono::Date& d); // TODO
+	Date next_workday(const Chrono::Date& d);
+	int week_of_year(const Chrono::Date& d);
 
 };	// Chrono

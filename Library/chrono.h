@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 
+// Main part of this namespace is a Date class which enables us to create objects
+// that represent dates which we can set between MIN_YEAR and MAX_YEAR.
 namespace Chrono {
 
 	enum class Month {

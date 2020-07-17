@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "library.h"
+#include "rational.h"
 
 // TODO:
 // 0. Test Chrono::Date
@@ -11,6 +12,7 @@
 int main()
 {
 	try {
+		/*
 		Chrono::Date date{ 12, Chrono::Month::dec, 2020 };
 		Book book{ "123-412-324-A", "Dziady", "Mickiewicz", Book::Genre::nonfiction, date };
 
@@ -34,6 +36,9 @@ int main()
 			std::cout << s << "\n\n";
 
 		std::cout << Chrono::week_of_year(Chrono::Date{24, Chrono::Month::sep, 2024}) << '\n';
+		*/
+
+		std::cout << Rational{ 2, 5 } << '\n';
 	}
 	catch (std::runtime_error e) {
 		std::cerr << e.what() << std::endl;

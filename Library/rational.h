@@ -14,7 +14,19 @@ public:
 	int getNumerator() const { return m_numerator; }
 	int getDenominator() const { return m_denominator; }
 
-	Rational& operator=(Rational& otherRational);
+	void setNumerator(int num) { m_numerator = num; }
+	void setDenominator(int den) { m_denominator = den; }
+
+	double toDouble() const;
+
+	void reduce(); //TODO
+
+	// Rational& operator=(Rational& otherRational);
+	// Rational& operator+(Rational& rational2);
+	// Rational operator-(Rational rational2);
+	// Rational operator*(Rational rational2);
+	//Rational operator/(Rational rational2);
+	//bool operator==(Rational rational2);
 
 private:
 
@@ -23,3 +35,9 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& os, const Rational& rational);
+
+Rational operator+(Rational elem1, Rational elem2);
+Rational operator-(Rational elem1, Rational elem2);
+Rational operator*(Rational elem1, Rational elem2);
+Rational operator/(Rational elem1, Rational elem2);
+bool operator==(Rational elem1, Rational elem2);

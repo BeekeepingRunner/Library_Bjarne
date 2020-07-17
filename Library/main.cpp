@@ -38,7 +38,7 @@ int main()
 		std::cout << Chrono::week_of_year(Chrono::Date{24, Chrono::Month::sep, 2024}) << '\n';
 		*/
 
-		std::cout << Rational{ 2, 5 } << '\n';
+		std::cout << Rational{ 3, 7 } * Rational{ 2, 5 } << '\n';
 	}
 	catch (std::runtime_error e) {
 		std::cerr << e.what() << std::endl;

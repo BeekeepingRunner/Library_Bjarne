@@ -3,6 +3,7 @@
 
 #include "library.h"
 #include "rational.h"
+#include "money.h"
 
 // TODO:
 // 0. Test Chrono::Date
@@ -37,8 +38,14 @@ int main()
 
 		std::cout << Chrono::week_of_year(Chrono::Date{24, Chrono::Month::sep, 2024}) << '\n';
 		*/
+		/*
+		Rational rat{ 10, 8 };
+		rat.reduce();
+		std::cout << rat.toDouble() << '\n';
+		*/
 
-		std::cout << Rational{ 3, 7 } * Rational{ 2, 5 } << '\n';
+		//Money money{ 123 };
+		//std::cout << toDollars(123) << std::endl;
 	}
 	catch (std::runtime_error e) {
 		std::cerr << e.what() << std::endl;

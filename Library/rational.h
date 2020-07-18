@@ -19,8 +19,7 @@ public:
 
 	double toDouble() const;
 
-	void reduce(); //TODO
-
+	void reduce();
 	// Rational& operator=(Rational& otherRational);
 	// Rational& operator+(Rational& rational2);
 	// Rational operator-(Rational rational2);
@@ -33,6 +32,8 @@ private:
 	int m_numerator;
 	int m_denominator;
 };
+
+int gcd(int a, int b);
 
 std::ostream& operator<<(std::ostream& os, const Rational& rational);
 

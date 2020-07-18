@@ -5,6 +5,20 @@ double Rational::toDouble() const
 	return static_cast<double>(m_numerator) / static_cast<double>(m_denominator);
 }
 
+void Rational::reduce()
+{
+	int divisor{ gcd(m_numerator, m_denominator) };
+	setNumerator(getNumerator() / divisor);
+	setDenominator(getDenominator() / divisor);
+}
+
+int gcd(int a, int b)
+{
+	if (b == 0)
+		return a;
+	return gcd(b, a % b);
+}
+
 std::ostream& operator<<(std::ostream& os, const Rational& rational)
 {
 	os << rational.getNumerator() << '/' << rational.getDenominator();

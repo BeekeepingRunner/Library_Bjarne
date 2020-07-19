@@ -25,7 +25,7 @@ std::ostream& operator<<(std::ostream& os, const Rational& rational)
 	return os;
 }
 
-Rational operator+(Rational elem1, Rational elem2)
+Rational operator+(const Rational& elem1, const Rational& elem2)
 {
 	Rational outRational{ 1, 1 };
 	
@@ -36,7 +36,7 @@ Rational operator+(Rational elem1, Rational elem2)
 	return outRational;
 }
 
-Rational operator-(Rational elem1, Rational elem2)
+Rational operator-(const Rational& elem1, const Rational& elem2)
 {
 	Rational outRational{ 1, 1 };
 
@@ -47,7 +47,7 @@ Rational operator-(Rational elem1, Rational elem2)
 	return outRational;
 }
 
-Rational operator*(Rational elem1, Rational elem2)
+Rational operator*(const Rational& elem1, const Rational& elem2)
 {
 	Rational outRational{ 1, 1 };
 
@@ -57,19 +57,22 @@ Rational operator*(Rational elem1, Rational elem2)
 	return outRational;
 }
 
-Rational operator/(Rational elem1, Rational elem2)
+Rational operator/(const Rational& elem1, const Rational& elem2)
 {
-	// invert elem2
-	int temp{ elem2.getNumerator() };
-	elem2.setNumerator(elem2.getDenominator());
-	elem2.setDenominator(temp);
+	Rational invertedElem2{};
+	invertedElem2.setNumerator(elem2.getDenominator());
+	invertedElem2.setDenominator(elem2.getNumerator());
 
-	return elem1 * elem2;
+	return elem1 * invertedElem2;
 }
 
-// TO IMPROVE WITH REDUCE()
-bool operator==(Rational elem1, Rational elem2)
+bool operator==(const Rational& elem1, const Rational& elem2)
 {
-	return elem1.getNumerator() == elem2.getNumerator()
-		&& elem1.getDenominator() == elem2.getDenominator();
+	Rational temp1 = elem1;
+	Rational temp2 = elem2;
+	temp1.reduce();
+	temp2.reduce();
+
+	return temp1.getNumerator() == temp2.getNumerator()
+		&& temp1.getDenominator() == temp2.getDenominator();
 }

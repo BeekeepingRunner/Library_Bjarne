@@ -44,8 +44,7 @@ int main()
 		std::cout << rat.toDouble() << '\n';
 		*/
 
-		//Money money{ 123 };
-		//std::cout << toDollars(123) << std::endl;
+		std::cout << Money{ 4652 } / Money{ 64 } << std::endl;
 	}
 	catch (std::runtime_error e) {
 		std::cerr << e.what() << std::endl;

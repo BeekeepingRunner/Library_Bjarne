@@ -20,6 +20,7 @@ public:
 	double toDouble() const;
 
 	void reduce();
+
 	// Rational& operator=(Rational& otherRational);
 	// Rational& operator+(Rational& rational2);
 	// Rational operator-(Rational rational2);
@@ -37,8 +38,8 @@ int gcd(int a, int b);
 
 std::ostream& operator<<(std::ostream& os, const Rational& rational);
 
-Rational operator+(Rational elem1, Rational elem2);
-Rational operator-(Rational elem1, Rational elem2);
-Rational operator*(Rational elem1, Rational elem2);
-Rational operator/(Rational elem1, Rational elem2);
-bool operator==(Rational elem1, Rational elem2);
+Rational operator+(const Rational& elem1, const Rational& elem2);
+Rational operator-(const Rational& elem1, const Rational& elem2);
+Rational operator*(const Rational& elem1, const Rational& elem2);
+Rational operator/(const Rational& elem1, const Rational& elem2);
+bool operator==(const Rational& elem1, const Rational& elem2);

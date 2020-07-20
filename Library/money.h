@@ -7,26 +7,40 @@
 class Money {
 
 public:
+	// for future uses
+	enum class currency {
+		USD,
+		PLN,
+		DKK,
+		EUR
+	};
 
+	// For dollars
 	Money(long int cents = 0);
+	// Money(currency curr, float quant);
 
 	long int getCents() const { return m_cents; }
 	void setCents(int cents) { m_cents = cents; }
 
+	currency getCurrency() const { return m_currency; }
+
 private:
 
 	long int m_cents;
+	currency m_currency;
 };
 
 double toDollars(long int cents);
 long int toCents(double dollars);
 
-// TODO
+// To improve with other currencies in the future
 Money operator+(const Money& money1, const Money& money2);
 Money operator-(const Money& money1, const Money& money2);
 Money operator*(const Money& money1, const Money& money2);
+Money operator*(const Money& money, long int elem);
+Money operator*(long int elem, const Money& money);
 Money operator/(const Money& money1, const Money& money2);
-// ****
+//
 
 std::ostream& operator<<(std::ostream& out, const Money& money);
-std::istream& operator>>(std::istream& in, Money& money);
+// std::istream& operator>>(std::istream& in, Money& money);

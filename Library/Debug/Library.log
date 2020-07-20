@@ -1,3 +1,5 @@
-﻿  money.cpp
-D:\Dev\C++\Library_Bjarne\Library\money.cpp(19,17): warning C4244: 'return': conversion from 'double' to 'long', possible loss of data
+﻿  main.cpp
+  money.cpp
+D:\Dev\C++\Library_Bjarne\Library\money.cpp(32,17): warning C4244: 'return': conversion from 'double' to 'long', possible loss of data
+  Generating Code...
   Library.vcxproj -> D:\Dev\C++\Library_Bjarne\Debug\Library.exe

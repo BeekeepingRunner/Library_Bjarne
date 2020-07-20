@@ -1,10 +1,23 @@
 #include "money.h"
+#include <string>
 
+// Money basic constructor.
+// It takes a cents number as an argument.
+// Cents will be conversed to dollars for various operations.
 Money::Money(long int cents)
-	: m_cents{ cents }
+	: m_cents{ cents }, m_currency{ currency::USD }
+{}
+
+// For future uses.
+// A user can specify a currency and a quantity of that currency,
+// which would be further converted to dollars using online exchange rate.
+/*
+Money::Money(currency curr, float quant)
+	: m_currency{ curr }
 {
 
 }
+*/
 
 // assume that cents number is correct
 double toDollars(long int cents)
@@ -34,6 +47,15 @@ Money operator*(const Money& money1, const Money& money2)
 	return Money{ money1.getCents() * money2.getCents() };
 }
 
+Money operator*(const Money& money, long int elem)
+{
+	return Money{ money.getCents() * elem };
+}
+Money operator*(long int elem, const Money& money)
+{
+	return money * elem;
+}
+
 Money operator/(const Money& money1, const Money& money2)
 {
 	// A precise result of division.
@@ -53,15 +75,14 @@ Money operator/(const Money& money1, const Money& money2)
 
 std::ostream& operator<<(std::ostream& out, const Money& money)
 {
-	out << '$' << toDollars(money.getCents());
-	return out;
-}
+	switch (money.getCurrency())
+	{
+	case Money::currency::USD:
+		out << '$' << toDollars(money.getCents());
+		break;
+	// Other cases to be written if currency conversion makes sense
+	// (with online exchange rate)
+	}
 
-// TODO
-std::istream& operator>>(std::istream& in, Money& money)
-{
-	double dollars{};
-	in >> dollars;
-	money.setCents(toCents(dollars));
-	return in;
+	return out;
 }
